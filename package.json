@@ -1,0 +1,15 @@
+{
+  "name": "ird-projet-2.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "LHackSRT",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^4.7.0",
+    "mongoose": "^6.3.8"
+  }
+}
