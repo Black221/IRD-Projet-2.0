@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-pathology-ecg-ul',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pathology-ecg-ul.component.css']
 })
 export class PathologyEcgUlComponent implements OnInit {
+    pathology: any;
+    @Input() link: any;
+    ecgs: any;
 
   constructor() { }
 

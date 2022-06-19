@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/API-Auth.iml" filepath="$PROJECT_DIR$/API-Auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/API-Res.iml" filepath="$PROJECT_DIR$/API-Res.iml" />
       <module fileurl="file://$PROJECT_DIR$/IRD-Projet-2.0.iml" filepath="$PROJECT_DIR$/IRD-Projet-2.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Platform.iml" filepath="$PROJECT_DIR$/Platform.iml" />
     </modules>
   </component>
 </project>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {StaffModel} from "../../models/staff.model";
 
 @Component({
   selector: 'app-specific-staff',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./specific-staff.component.css']
 })
 export class SpecificStaffComponent implements OnInit {
+    // @ts-ignore
+    staff: StaffModel;
+    link: any;
+    id: any;
 
   constructor() { }
 

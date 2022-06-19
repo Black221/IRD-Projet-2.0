@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PathologyService} from "../services/pathology.service";
 
 @Component({
   selector: 'app-pathology',
@@ -6,10 +7,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pathology.component.css']
 })
 export class PathologyComponent implements OnInit {
+    // @ts-ignore
+    pathologies: any[];
+    pathologyServer : any;
 
-  constructor() { }
+    constructor(
+        private pathologyService: PathologyService
+    ) { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+        setTimeout( () =>{
+            this.pathologyService.getAllPathology().then(
+                (res) => {
+                    // @ts-ignore
+                    if (!res) {
+                        console.log(res);
+                    } else {
+                        // @ts-ignore
+                        this.pathologyServer = res;
+                        if (this.pathologyServer.pathologies[0] !== undefined)
+                            this.pathologies = this.pathologyServer.pathologies;
+                        console.log(res);
+                    }
+                }
+            );
+        }, 200)
+    }
+
+    onDelete () {
+
+    }
+
+    onUpdate () {
+
+    }
 
 }

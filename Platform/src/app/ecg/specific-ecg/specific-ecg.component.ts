@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-specific-ecg',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./specific-ecg.component.css']
 })
 export class SpecificEcgComponent implements OnInit {
+    ecg: any;
+    patient: any;
+    @Input() link: any;
 
   constructor() { }
 

@@ -1,1 +1,18 @@
-<p>pathology-ecg-ul works!</p>
+<app-nav-bar></app-nav-bar>
+<div class="container mt-lg-5">
+    <div class="px-4 bg-success d-flex align-items-center justify-content-between text-light">
+        <h2>{{pathology.name}}</h2>
+        <app-filter></app-filter>
+    </div>
+    <div class="container mt-lg-2">
+        <div *ngFor="let ecg of ecgs">
+            <app-ecg-li *ngIf="pathology.name === ecg.pathology_name"
+                          [ecg]="ecg"
+            ></app-ecg-li>
+        </div>
+    </div>
+
+</div>
+<div class="container">
+    <app-return-link [link] = "link" ></app-return-link>
+</div>

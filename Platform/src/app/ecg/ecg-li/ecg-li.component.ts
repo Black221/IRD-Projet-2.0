@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-ecg-li',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ecg-li.component.css']
 })
 export class EcgLiComponent implements OnInit {
+    @Input() ecg: any;
+    patient: any;
+    // @ts-ignore
+    @Input() id: number;
 
   constructor() { }
 

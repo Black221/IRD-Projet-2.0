@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {StaffModel} from "../models/staff.model";
+import {StaffService} from "../services/staff.service";
 
 @Component({
   selector: 'app-staff',
@@ -7,9 +9,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StaffComponent implements OnInit {
 
-  constructor() { }
+    //@ts-ignore
+    staffs: StaffModel[];
+    staffServer: any;
+    id: any;
 
-  ngOnInit(): void {
-  }
+    constructor(
+        private staffService: StaffService
+    ) { }
+
+    ngOnInit(): void {
+        this.staffService.getAllStaff().then(
+            (res) => {
+                // @ts-ignore
+                if (!res) {
+                    console.log(res);
+                } else {
+                    this.staffServer = res;
+                    this.staffs = this.staffServer.staffs;
+                    console.log(res);
+                }
+            }
+        );
+    }
+
+    onDelete () {
+
+    }
+
+    onUpdate () {
+
+    }
 
 }

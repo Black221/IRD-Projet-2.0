@@ -1,0 +1,14 @@
+{
+  "name": "api-res",
+  "version": "1.0.0",
+  "main": "res.server.js",
+  "scripts": {
+    "start": "nodemon res.server.js"
+  },
+  "author": "LHackSRT",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "nodemon": "^2.0.16"
+  }
+}

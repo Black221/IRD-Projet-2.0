@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PathologyService} from "../../services/pathology.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-specific-pathology',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./specific-pathology.component.css']
 })
 export class SpecificPathologyComponent implements OnInit {
+    pathology: any;
+    link: any;
 
-  constructor() { }
+  constructor(
+      private route: ActivatedRoute,
+      private pathologyService: PathologyService,
+  ) { }
 
   ngOnInit(): void {
+      const id = this.route.snapshot.params['id'];
+      setTimeout( () => {
+          this.pathology = this.pathologyService.getPathologyByIndex(+id);
+      }, 100)
   }
 
 }

@@ -1,17 +1,30 @@
+const { MongoClient } = require('mongodb');
+const {mongoose} = require('mongoose');
 
-/**
- * Connexion to our database
- */
+const uri = "mongodb+srv://"+process.env.DB_USER+":"+process.env.DB_PASS+"@guapicluster.z5rby.mongodb.net/"+process.env.DB_NAME;
+const uri_local = "mongodb://localhost:27017/test_"+process.env.DB_NAME;
+let connected = false;
 
-//mongodb+srv://ird_esp:passer@dbtest.mlfjm.mongodb.net/?retryWrites=true&w=majority
-
-import mongoose from "mongoose";
-
-main().catch(err => console.log(err));
-
-async function main() {
-    await mongoose.connect('mongodb://localhost:27017/apiRessources');
-    console.log('Connected to MongoDB database successfully');
+let localConnect = function () {
+    // DB connection
+    mongoose.connect('mongodb://localhost:27017/test')
+        .then( () => console.log('Connected to MDB'))
+        .catch(error => () => console.log('Connected error'));
 }
 
-module.exports = main;
+
+//const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// client.connect(err => {
+//     if (!err) {
+//         connected = true;
+//         console.log("Connected to MongoDB");
+//     } else {
+//         console.log("Error to connect on MongoDB: ", err);
+//         console.log("Trying to connect on local db ....");
+//
+//         localConnect();
+//     }
+//     // perform actions on the collection object
+// });
+
+localConnect();

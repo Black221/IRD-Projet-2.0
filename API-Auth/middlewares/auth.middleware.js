@@ -1,22 +1,21 @@
 const jwt = require('jsonwebtoken');
-const UserModel = require('../models/user.model');
+const Staff = require("../models/staff.model");
+
 
 module.exports.checkUser = (req, res, next) => {
-    const token = req.cookies.jwt;
+    let token= req.cookies.jwt;
     if (token) {
         jwt.verify(
             token, process.env.TOKEN_SECRET,'', async (err, decodedToken) => {
-            if (err) {
-                res.locals.user = null;
-                res.cookie('jwt', '', { maxAge: 1 });
-                next();
-            } else {
-                let user = await UserModel.findById(decodedToken.id);
-                res.locals.user = user;
-                console.log(res.locals.user);
-                next();
-            }
-        });
+                if (err) {
+                    res.locals.user = null;
+                    res.cookie('jwt', '', { maxAge: 1 });
+                    next();
+                } else {
+                    res.locals.user = await Staff.findById(decodedToken.id);
+                    next();
+                }
+            });
     } else {
         res.locals.user = null;
         next();
@@ -24,20 +23,22 @@ module.exports.checkUser = (req, res, next) => {
 }
 
 
-
 module.exports.requireAuth = (req, res, next) => {
     const token = req.cookies.jwt;
+
     if (token) {
         jwt.verify(
             token, process.env.TOKEN_SECRET,'', async (err, decodedToken) => {
                 if (err) {
                     console.log(err);
+                    res.json({auth: false})
                 } else {
                     console.log(decodedToken.id);
                     next();
                 }
             });
     } else {
+        res.json({auth: false})
         console.log('No token');
     }
 }
