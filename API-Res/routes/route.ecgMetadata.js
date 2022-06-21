@@ -11,5 +11,4 @@ const MetadataModel = require("../models/MetadataModel")
 const EcgMetadataController = require('../controllers/ecgMetadata.controller')
 
 // Créer un ECG Metadata
-router.post('/postOne/:createrId', EcgMetadataController.addOneECGMetadata)
-
+router.post('/postOne/:createrId/:ecgId', EcgMetadataController.addOneECGMetadata)
