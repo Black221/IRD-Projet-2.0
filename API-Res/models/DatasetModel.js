@@ -16,10 +16,3 @@ const DatasetSchema = mongoose.Schema({
 })
 
 module.exports = mongoose.model('Dataset', DatasetSchema)
-
-
-// const UserSchema = mongoose.Schema({
-    
-// })
-
-// module.exports = mongoose.model('User', UserSchema)

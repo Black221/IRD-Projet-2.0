@@ -1,19 +1,20 @@
 const { default: mongoose } = require("mongoose");
 
 const MedicalStaffSchema = mongoose.Schema({
-    name: {
+
+    firstname: {
         type: String,
         required: true
     },
-    surname: {
+    lastname: {
         type: String,
         required: true
     },
-    numberMedicalStaff: {
-        type: String,
-        unique: true
-    },
-    dateOfBirth: {
+    // numberMedicalStaff: { 
+    //     type: String,
+    //     unique: true 
+    // },
+    birthday: {
         type: Date
     },
     cni: {
@@ -27,6 +28,21 @@ const MedicalStaffSchema = mongoose.Schema({
     sex: {
         type: String,
         enum: ['M', 'F']
+    },
+    address: {
+        country: {
+            type: String,
+            default: 'Senegal'
+        },
+        city: {
+            type: String
+        },
+        address: {
+            type: String
+        }
+    },
+    phone:{
+            type : String
     },
     login: {
         type: String,

@@ -21,7 +21,13 @@ module.exports.registerValidation = data => {
         login: Joi
             .string()
             .required()
-            .min(6)
+            .min(6),
+        sex: Joi.string(),
+        profession: Joi.string(),
+        address: Joi.object(),
+        cni: Joi.string(),
+        birthday: Joi.string(),
+        nationality: Joi.string()
     });
     return schema.validate(data);
 }

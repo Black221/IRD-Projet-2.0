@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const MAX_AGE = 8 * 60 * 60 * 1000;
 const createToken = (id) => {
     return jwt.sign(
-        { user : id}, process.env.TOKEN_SECRET, { expiresIn: MAX_AGE}, false
+        { user : id}, process.env.TOKEN_SECRET, { expiresIn: MAX_AGE}
     )
 };
 
@@ -29,7 +29,11 @@ module.exports.staffRegister = async (req, res) => {
         email: req.body.email,
         login: req.body.login,
         password: req.body.password,
-        birthday: req.body.birthday
+        birthday: req.body.birthday,
+        sex: req.body.sex,
+        profession: req.body.profession,
+        address: req.body.address,
+        cni : req.body.cni
     });
     console.log(staff);
     try {
@@ -52,15 +56,18 @@ module.exports.login = async (req, res) => {
         if (!validPass)
             return res.status(400).json('Invalid login or password');
         const token = createToken(staff._id)
-        res.status(200).cookie('jwt', token, { httpOnly: true, maxAge:MAX_AGE}).json(staff._id);
+        res.status(200).setHeader('authorization', `Bearer ${token}`).json({
+            userId: staff._id,
+            token: token
+        });
+
     } catch (err) {
         res.status(400).json({err : err});
     }
 };
 
 module.exports.isAuth = (req, res) => {
-    let token= req.cookies.jwt;
-    console.log(req.headers.cookie.split('=')[1])
+    const token= req.headers['authorization'].split(' ')[1];
     try {
         console.log("token :" + token);
         if (token) {
@@ -73,7 +80,7 @@ module.exports.isAuth = (req, res) => {
                     }
                 });
         } else {
-            res.status(200).send({isAuth: false, token: "token"});
+            res.status(200).send({isAuth: false, token: token});
             console.log(token);
         }
     } catch (err) {

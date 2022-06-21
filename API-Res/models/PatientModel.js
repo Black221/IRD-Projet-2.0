@@ -13,11 +13,7 @@ const PatientSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    numberPatient: {
-        type: String,
-        unique: true
-    },
-    dateOfBirth: {
+    birthday: {
         type: Date
     },
     cni: {
@@ -45,12 +41,7 @@ const PatientSchema = mongoose.Schema({
         }
     },
     phone: {
-        countryIndicator: {
-            type: String
-        },
-        phoneNumber: {
-            type: String
-        }
+        type: String
     },
     state: {
         type: Boolean,

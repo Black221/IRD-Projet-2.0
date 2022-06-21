@@ -13,10 +13,6 @@ const EcgSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    numberEcg: {
-        type: String,
-        unique: true,
-    },
     filename: { //idECG_nomPatient
         type: String,
         unique: true
