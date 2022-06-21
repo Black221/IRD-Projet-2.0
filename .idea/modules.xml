@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/API-Res.iml" filepath="$PROJECT_DIR$/API-Res.iml" />
       <module fileurl="file://$PROJECT_DIR$/IRD-Projet-2.0.iml" filepath="$PROJECT_DIR$/IRD-Projet-2.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/Platform.iml" filepath="$PROJECT_DIR$/Platform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Platform-1.0.iml" filepath="$PROJECT_DIR$/Platform-1.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Platform/Platform-2.0.iml" filepath="$PROJECT_DIR$/Platform/Platform-2.0.iml" />
     </modules>
   </component>
 </project>

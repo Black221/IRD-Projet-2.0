@@ -9,6 +9,7 @@ import {SpecificPathologyComponent} from "./components/specific-pathology/specif
 import {PathologyEcgUlComponent} from "./components/pathology-ecg-ul/pathology-ecg-ul.component";
 import {EcgModule} from "../ecg/ecg.module";
 import {PathologyRoutingModule} from "./pathology-routing.module";
+import {SharedModule} from "../shared/shared.module";
 
 
 
@@ -23,8 +24,9 @@ import {PathologyRoutingModule} from "./pathology-routing.module";
         CommonModule,
         ReactiveFormsModule,
         PathologyRoutingModule,
-        CoreModule,
-        EcgModule
+        EcgModule,
+        SharedModule,
+
     ],
     exports: [
 

@@ -4,7 +4,6 @@ import {HeaderComponent} from "./components/header/header.component";
 import {HomeComponent} from "./components/home/home.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {ActivityComponent} from "./components/activity/activity.component";
-import {ReturnLinkComponent} from "./components/return-link/return-link.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
@@ -15,7 +14,7 @@ import {PathologyService} from "./services/pathology/pathology.service";
 import {PatientService} from "./services/patient/patient.service";
 import {StaffService} from "./services/staff/staff.service";
 import {CookieService} from "ngx-cookie-service";
-import {httpInterceptorProviders} from "./interceptors/index";
+import {httpInterceptorProviders} from "./interceptors";
 import {StaffResolver} from "./resolvers/staff.resolver";
 
 @NgModule({
@@ -24,7 +23,6 @@ import {StaffResolver} from "./resolvers/staff.resolver";
         HomeComponent,
         FooterComponent,
         ActivityComponent,
-        ReturnLinkComponent,
         FilterComponent,
         NavBarComponent
     ],
@@ -40,7 +38,6 @@ import {StaffResolver} from "./resolvers/staff.resolver";
         HomeComponent,
         FooterComponent,
         ActivityComponent,
-        ReturnLinkComponent,
         FilterComponent,
         NavBarComponent
     ],

@@ -9,6 +9,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {CoreModule} from "../core/core.module";
 import {PatientRoutingModule} from "./patient-routing.module";
+import {SharedModule} from "../shared/shared.module";
 
 
 
@@ -23,7 +24,7 @@ import {PatientRoutingModule} from "./patient-routing.module";
         CommonModule,
         ReactiveFormsModule,
         PatientRoutingModule,
-        CoreModule
+        SharedModule,
     ]
 })
 export class PatientModule { }

@@ -9,6 +9,7 @@ import {SpecificEcgComponent} from "./components/specific-ecg/specific-ecg.compo
 import {RouterModule} from "@angular/router";
 import {CoreModule} from "../core/core.module";
 import {EcgRoutingModule} from "./ecg-routing.module";
+import {SharedModule} from "../shared/shared.module";
 
 
 
@@ -22,8 +23,8 @@ import {EcgRoutingModule} from "./ecg-routing.module";
     imports: [
         CommonModule,
         ReactiveFormsModule,
+        SharedModule,
         EcgRoutingModule,
-        CoreModule
     ],
     exports: [
         EcgComponent,
