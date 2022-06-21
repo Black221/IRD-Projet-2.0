@@ -5,9 +5,6 @@ const DatasetSchema = mongoose.Schema({
         type: String, 
         required: true
     },
-    path: {
-        type: String
-    },
     name: {
         type: String,
         unique: true,

@@ -31,10 +31,6 @@ const EcgMetadataSchema = mongoose.Schema({
             type: String,
             enum: ['M', 'F']
         }
-    },
-    state: {
-        type: Boolean,
-        default: true
     }
 })
 

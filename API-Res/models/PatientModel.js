@@ -5,19 +5,12 @@ const PatientSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    metadata_id: { // foreign key
-        type: String, 
-        required: true 
-    },
-    path: {
-        type: String
-    },
     firstname: {
         type: String,
         required: true
     },
     lastname: {
-        type: String, 
+        type: String,
         required: true
     },
     numberPatient: {
@@ -53,13 +46,11 @@ const PatientSchema = mongoose.Schema({
     },
     phone: {
         countryIndicator: {
-            type: String, 
-            minLength: 2,
-            maxLength: 6
+            type: String
         },
-        phonenumber: {
-            type : String
-        } 
+        phoneNumber: {
+            type: String
+        }
     },
     state: {
         type: Boolean,
