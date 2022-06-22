@@ -7,6 +7,9 @@ import { PathologyEcgListComponent } from './components/pathology-ecg-list/patho
 import { SpecificPathologyComponent } from './components/specific-pathology/specific-pathology.component';
 import {PatientRoutingModule} from "../patient/patient-routing.module";
 import {CoreModule} from "../core/core.module";
+import {SharedModule} from "../shared/shared.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {EcgModule} from "../ecg/ecg.module";
 
 
 
@@ -21,7 +24,11 @@ import {CoreModule} from "../core/core.module";
     imports: [
         CommonModule,
         PatientRoutingModule,
-        CoreModule
+        CoreModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        EcgModule
     ]
 })
 export class PathologyModule { }

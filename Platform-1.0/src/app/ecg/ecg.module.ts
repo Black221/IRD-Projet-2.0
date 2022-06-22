@@ -12,12 +12,15 @@ import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
-  declarations: [
-    EcgComponent,
-    EcgItemComponent,
-    SpecificEcgComponent,
-    EcgFormComponent
-  ],
+    declarations: [
+        EcgComponent,
+        EcgItemComponent,
+        SpecificEcgComponent,
+        EcgFormComponent
+    ],
+    exports: [
+        EcgItemComponent
+    ],
     imports: [
         CommonModule,
         EcgRoutingModule,

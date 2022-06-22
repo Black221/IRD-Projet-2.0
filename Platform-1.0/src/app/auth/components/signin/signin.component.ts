@@ -14,8 +14,7 @@ export class SigninComponent implements OnInit {
 
     // @ts-ignore
     headerComponent: HeaderComponent;
-    // @ts-ignore
-    signInForm: FormGroup;
+    signInForm!: FormGroup;
     // @ts-ignore
     errorMessage: any;
     // @ts-ignore

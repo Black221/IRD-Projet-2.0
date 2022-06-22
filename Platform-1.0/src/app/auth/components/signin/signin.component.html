@@ -1,22 +1,22 @@
-<!--<div class="bg-success bg-opacity-25">-->
-<!--    <div class="container col-5 p-5 d-flex justify-content-sm-center">-->
-<!--        <form class="card mb-2" [formGroup]="signInForm" (ngSubmit)="onSubmit()">-->
-<!--            <img src="../../../../assets/platform/images/137028.jpg" class="card-img-top" alt="...img">-->
-<!--            <div class="card-body bg-opacity-10 bg-success">-->
-<!--                <div class="mb-2 text-danger">{{ errorMessage }}</div>-->
-<!--                <div class="form-floating mb-3">-->
-<!--                    <input type="text" class="form-control" id="login" placeholder="name@example.com" formControlName="login">-->
-<!--                    <label for="login">Login</label>-->
-<!--                </div>-->
-<!--                <div class="form-floating">-->
-<!--                    <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">-->
-<!--                    <label for="password">Password</label>-->
-<!--                </div>-->
-<!--                <div class="m-auto  col-4">-->
-<!--                    <p class="text-danger"></p>-->
-<!--                    <input type="submit" [disabled]="signInForm.invalid" class="form-control bg-success link-light">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
+<div class="bg-success bg-opacity-25">
+    <div class="container col-5 p-5 d-flex justify-content-sm-center">
+        <form class="card mb-2" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+            <img src="../../../../assets/platform/images/137028.jpg" class="card-img-top" alt="...img">
+            <div class="card-body bg-opacity-10 bg-success">
+                <div class="mb-2 text-danger">{{ errorMessage }}</div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="login" placeholder="name@example.com" formControlName="login">
+                    <label for="login">Login</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+                    <label for="password">Password</label>
+                </div>
+                <div class="m-auto  col-4">
+                    <p class="text-danger"></p>
+                    <input type="submit" [disabled]="signInForm.invalid" class="form-control bg-success link-light">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

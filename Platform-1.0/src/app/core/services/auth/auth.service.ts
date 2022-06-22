@@ -37,7 +37,6 @@ export class AuthService {
         isAuth : "http://localhost:3000/api/auth/isauth"
     }
 
-    isAuthSubject = new Subject<boolean>();
     // @ts-ignore
     private isAuth!: boolean;
     auth:any = "62ab1f214e1b18406f2eab8f";
@@ -45,9 +44,6 @@ export class AuthService {
     constructor(private httpClient: HttpClient) {
     }
 
-    emitIsAuth() {
-        this.isAuthSubject.next(this.isAuth)
-    }
 
     setIsAuth(isAuth: boolean) {
         this.isAuth = isAuth;
@@ -55,10 +51,6 @@ export class AuthService {
 
     getIsAuth() {
         return this.isAuth;
-    }
-
-    setAuth (id: any) {
-        this.auth = id;
     }
 
 

@@ -6,6 +6,8 @@ import { PatientFormComponent } from './components/patient-form/patient-form.com
 import { SpecificPatientComponent } from './components/specific-patient/specific-patient.component';
 import { PatientEcgListComponent } from './components/patient-ecg-list/patient-ecg-list.component';
 import {PatientRoutingModule} from "./patient-routing.module";
+import {SharedModule} from "../shared/shared.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -17,9 +19,13 @@ import {PatientRoutingModule} from "./patient-routing.module";
     SpecificPatientComponent,
     PatientEcgListComponent
   ],
-  imports: [
-    CommonModule,
-    PatientRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        PatientRoutingModule,
+        SharedModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule
+    ]
 })
 export class PatientModule { }

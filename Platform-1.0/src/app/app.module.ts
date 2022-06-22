@@ -10,6 +10,7 @@ import {EcgModule} from "./ecg/ecg.module";
 import {PatientModule} from "./patient/patient.module";
 import {StaffModule} from "./staff/staff.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AuthModule} from "./auth/auth.module";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         CoreModule,
         AppRoutingModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ],
   providers: [],
   bootstrap: [AppComponent]
