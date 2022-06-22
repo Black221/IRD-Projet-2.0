@@ -25,11 +25,11 @@ export class EcgComponent implements OnInit {
                 if (!res) {
                     console.log(res);
                 } else {
-                    // @ts-ignore
                     this.ecgServer = res;
                     console.log(res);
-                    if (this.ecgServer.ecgs[0] !== undefined)
-                        this.ecgs = this.ecgServer.ecgs;
+                    // @ts-ignore
+                    if (typeof res !== "string" && res[0]!== undefined)
+                        this.ecgs = this.ecgServer;
                 }
             }
         );

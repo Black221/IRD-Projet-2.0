@@ -9,7 +9,7 @@ module.exports.getAllDataset = async(req, res) => {
     try {
         const allDataset = await DatasetModel.find()
         if (allDataset) {
-            res.status(200).json({allDataset})      
+            res.status(200).json(allDataset)
         } else {
            res.status(200).json('Rien dans la base de donnée') 
         }

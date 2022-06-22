@@ -68,7 +68,7 @@ export class PatientService {
         }
     }
 
-    getSpecificPatient(id: ObjectId) {
+    getSpecificPatient(id: string) {
         return new Promise (
             (resolve, reject) => {
                 this.httpClient.get(this.urlPatient.getOne+id).subscribe(
@@ -98,7 +98,7 @@ export class PatientService {
         );
     };
 
-    updatePatient(id: ObjectId, patient: any) {
+    updatePatient(id: string, patient: any) {
         return new Promise (
             (resolve, reject) => {
                 this.httpClient.put(this.urlPatient.update+id, patient).subscribe(
@@ -113,7 +113,7 @@ export class PatientService {
         );
     };
 
-    deletePatient(id: ObjectId) {
+    deletePatient(id: string) {
         return new Promise (
             (resolve, reject) => {
                 this.httpClient.delete(this.urlPatient.delete+id).subscribe(

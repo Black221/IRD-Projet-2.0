@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/API-Auth.iml" filepath="$PROJECT_DIR$/API-Auth.iml" />
       <module fileurl="file://$PROJECT_DIR$/API-Res.iml" filepath="$PROJECT_DIR$/API-Res.iml" />
+      <module fileurl="file://$PROJECT_DIR$/API-Res-1.0.iml" filepath="$PROJECT_DIR$/API-Res-1.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/IRD-Projet-2.0.iml" filepath="$PROJECT_DIR$/IRD-Projet-2.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/Platform-1.0.iml" filepath="$PROJECT_DIR$/Platform-1.0.iml" />
     </modules>

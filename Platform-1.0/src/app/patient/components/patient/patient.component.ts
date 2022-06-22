@@ -10,7 +10,7 @@ import {date} from "joi";
 })
 export class PatientComponent implements OnInit {
     // @ts-ignore
-    patients: any[];
+    patients: any[] = [];
     // @ts-ignore
     patientServer: any;
 
@@ -25,19 +25,37 @@ export class PatientComponent implements OnInit {
                 if (!res) {
                     console.log(res);
                 } else {
-                    // @ts-ignore
                     this.patientServer = res;
-                    if (this.patientServer.patients[0] !== undefined)
-                        this.patients = this.patientServer.patients;
-                    console.log(res);
+                    // @ts-ignore
+                    if (typeof res !== "string" && res.patients[0] !== undefined)
+                        // @ts-ignore
+                        this.patients = res.patients;
+                    // @ts-ignore
+                    console.log(res.patients);
                 }
             }
         );
     }
 
-
-
-    onDelete () {
+    onDelete(id: string) {
+        console.log(id)
+        this.patientService.deletePatient(id).then(
+            (res) => {
+                // @ts-ignore
+                if (!res) {
+                    console.log(res);
+                } else {
+                    // @ts-ignore
+                    console.log(res);
+                    for (let i = 0; i < this.patients.length; i++) {
+                        if (this.patients[i]._id === id) {
+                            this.patients.splice(i, 1);
+                            break;
+                        }
+                    }
+                }
+            }
+        );
 
     }
 

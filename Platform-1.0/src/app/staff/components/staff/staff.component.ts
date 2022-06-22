@@ -11,7 +11,7 @@ import {AuthService} from "../../../core/services/auth/auth.service";
 export class StaffComponent implements OnInit {
 
     //@ts-ignore
-    staffs: StaffModel[];
+    staffs: StaffModel[] = [];
     staffServer: any;
     id: any;
 
@@ -36,12 +36,31 @@ export class StaffComponent implements OnInit {
         )
     }
 
-    onDelete () {
-
+    onDelete(id: string) {
+        this.staffService.deleteStaff(id).then(
+            (res) => {
+                // @ts-ignore
+                if (!res) {
+                    console.log(res);
+                } else {
+                    this.staffServer = res;
+                    for (let i = 0; i < this.staffs.length; i++) {
+                        if (this.staffs[i]._id === id) {
+                            this.staffs.splice(i, 1);
+                            break;
+                        }
+                    }
+                    console.log(res);
+                }
+            }
+        )
     }
 
     onUpdate () {
 
     }
 
+    getAuth() {
+        return this.authService.getAuth();
+    }
 }

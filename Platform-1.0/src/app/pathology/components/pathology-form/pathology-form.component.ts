@@ -57,6 +57,7 @@ export class PathologyFormComponent implements OnInit {
                     this.router.navigate(['/pathologies']);
                 }, (error) => {
                     this.errorMessage = error ;
+                    console.log(error)
                 }
             )
         console.log(this.errorMessage);

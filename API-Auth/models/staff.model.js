@@ -33,8 +33,7 @@ const staffSchema = new mongoose.Schema(
             require: true
         },
         birthday: {
-            type: Date,
-            default: Date.now
+            type: String
         },
         accept: {
             type: Boolean,

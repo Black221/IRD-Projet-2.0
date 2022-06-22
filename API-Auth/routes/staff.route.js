@@ -10,7 +10,7 @@ const {
 router.get('/logout', logout)
 
 router.get('/all', getAllStaff);
-router.get('/one/:id', getOneStaff);
+router.get('/specific/:id', getOneStaff);
 
 router.delete('/delete/:id', deleteStaff);
 router.patch('/update/:id', updateStaff);

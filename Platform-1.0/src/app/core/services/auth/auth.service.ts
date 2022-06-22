@@ -16,6 +16,7 @@ export class AuthService {
     getToken (): string {
         return this.token;
     }
+    private admin!:boolean;
 
     getUserId (): string {
         return this.userId;
@@ -41,6 +42,9 @@ export class AuthService {
     private isAuth!: boolean;
     auth:any = "62ab1f214e1b18406f2eab8f";
 
+    getAuth () {
+        return this.auth;
+    }
     constructor(private httpClient: HttpClient) {
     }
 

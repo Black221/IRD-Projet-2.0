@@ -1,1 +1,55 @@
-<p>specific-staff works!</p>
+<div class="container">
+    <div class="col-xxl-8 mb-5 mb-xxl-0">
+        <div class="bg-secondary-soft px-4 py-5 rounded">
+            <div class="bg-success mb-4 mt-0 d-flex justify-content-between p-3 text-light">
+                <h4 class="">{{staff.firstname+' '+staff.lastname}}</h4>
+                <div class="fs-5">
+                    <a class="mx-2 link-info" routerLink="/staff/ecg/{{id}}"><i class="fa-solid fa-eye"></i></a>
+                    <a class="mx-2 link-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a class="mx-2 link-danger"><i class="fa-solid fa-trash-can"></i></a>
+                </div>
+            </div>
+            <div class="row g-3 p-4 pt-2">
+                <!-- Phone number -->
+                <div class="col-md-5">
+                    <label class="form-label fw-bold">Phone number </label>
+                    <div type="text" class="form-control">{{staff.phone}}</div>
+                </div>
+                <!-- Birthday -->
+                <div class="col-md-5">
+                    <label class="form-label  fw-bold">Birthday</label>
+                    <div type="text" class="form-control">{{staff.birthday}}</div>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label  fw-bold">Sex</label>
+                    <div type="text" class="form-control">{{staff.sex}}</div>
+                </div>
+                <!-- Skype -->
+                <div class="col-md-6">
+                    <label class="form-label  fw-bold">Nationality </label>
+                    <div type="text" class="form-control">{{staff.nationality}}</div>
+                </div>
+                <!-- Sex-->
+                <div class="col-md-6">
+                    <label class="form-label  fw-bold">CNI</label>
+                    <div type="text" class="form-control">{{staff.cni}}</div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label  fw-bold">Address</label>
+                    <div type="text" class="form-control">{{staff.address.address}}</div>
+                </div>
+                <!-- Birthday -->
+                <div class="col-md-4">
+                    <label class="form-label  fw-bold">City</label>
+                    <div type="text" class="form-control">{{staff.address.city}}</div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label  fw-bold">Country</label>
+                    <div type="text" class="form-control">{{staff.address.country}}</div>
+                </div>
+            </div> <!-- Row END -->
+        </div>
+        <app-return-link [link] = "'/staffs'" ></app-return-link>
+    </div>
+</div>
+

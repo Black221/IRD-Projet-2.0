@@ -52,7 +52,7 @@ export class PathologyService {
         );
     };
 
-    getSpecificPathology(id: ObjectId) {
+    getSpecificPathology(id: string) {
         return new Promise (
             (resolve, reject) => {
                 this.httpClient.get(this.urlPathology.getOne+id).subscribe(
@@ -97,7 +97,7 @@ export class PathologyService {
         );
     };
 
-    deletePathology(id: ObjectId) {
+    deletePathology(id: string) {
         return new Promise (
             (resolve, reject) => {
                 this.httpClient.delete(this.urlPathology.delete+id).subscribe(
@@ -113,7 +113,7 @@ export class PathologyService {
     };
 
     getPathologyByIndex(index: number) {
-        console.log(this.pathologies[0])
+        console.log(this.pathologies)
         return this.pathologies[+index - 1];
     }
 
