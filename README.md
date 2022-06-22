@@ -1,5 +1,3 @@
-# IRD-Projet-2.0
-
 
 # Project Title
 
@@ -185,7 +183,7 @@ function getSinglePatient() {
 - URL pour afficher un patient
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `patientId` | `string` | **Required**  |
+|`patientId`| `string` | **Required**  |
 
 ```http
   GET /patient/getOne/${patientId}
@@ -277,7 +275,7 @@ function deletePatient() {
 #### MODEL
 
 
-| Patient Schema | Type     | Description                |
+| ECG Schema | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `dataset_id` | `string` | **Foreign Key Required** |
 | `metadata_id` | `string` | **Foreign Key** |
@@ -406,3 +404,37 @@ function deleteOneEcg() {
 ```http
   DELETE /deleteOne/${ecgId}
 ```
+***
+### ECGMETADATA
+
+#### MODEL
+
+
+| ECGMETADATA Schema | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `ecg_id` | `string` | **Foreign Key Required Unique** |
+| `metadata_id` | `string` | **Foreign Key** |
+| `recording` | `object` | **NOT Required & fields :{started_at, ended_at}**. |
+| `patient` | `object` | **NOT REQUIRED & fields :{age, height, weight, sex}**. |
+| `state` | `boolean` | **NOT Required**.  |
+
+***
+- addOneECGMetadata()
+```javascript
+function addOneECGMetadata() {
+    return 
+    ## Cette fonction permet d'ajouter les metadonnees medicales 
+    d'un Ecg !
+}
+```
+- URL pour effectuer Cette requete
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `createrId` | `string` | **Required**             |
+| `ecgId` | `string` | **Required**  |
+
+```http
+  POST /ecg/postOne/${createrId}/${ecgId}
+```
+
+
