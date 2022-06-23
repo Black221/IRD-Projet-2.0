@@ -25,13 +25,44 @@ l'assistante ou le medecin->(c'est lui qui doit preciser la pathologie )
 . Et mettre les differentes pathologies cardiaques comme une liste deroulante
 
 
-1 - deploiement
-2 - les roles(assistante ->(saisie patient , entrer ecg) , medecin-> pathologie)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-3- statistics 
-4- les regles d'anonymisation , hashage...
-5 - analyse des metadonnees medicales  
+1 - deploiement
+2 - les roles(assistante ->(saisie patient , entrer ecg) , medecin-> voir données anonymisées, admin -> (gérer le staff et les pathologies))
+
+3- statistics requete serveur (nombres ecgs, nombres pathologies, ...) 
+4- les regles d'anonymisation , hashage... : + api patient , voir regle anonymisation medicale
+5 - analyse des metadonnees medicales 
 
 
 En  entree on a la pathologie Cardiaque ->  Autre pathologie -> ECG -> metadonnees ou autres analyses 
+
+api generation de code 
+ajouter profil du medecin
+
+
+PATIENT
+- birthday
+- 
+
+ECG
+- dataset : tableaux de string contenant les ids
+- nomenclalture filepath filename
+- 
+
+ECG METADATA 
+- recording : + date
+
+MEDICAL STAFF
+- state 
+
+
+
+
+
+
+
+
+
+
 
