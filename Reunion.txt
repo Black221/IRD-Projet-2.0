@@ -1,0 +1,37 @@
+/** REMARQUES ET SUGGESTIONS DE LA REUNION DU 23 JUIN 2022 **/
+
+  
+
+les operations de crud ok. --> but you, you know as well as others members  that update operation does not work 
+
+deploiement au niveau du serveur...
+
+sexe date ou age ( anonymisation des donnees ) ---> systeme d'anonymisation : code spot
+seul le medecin doit avoir acces aux infos sensibles par le biais d'un code ....
+
+suppression patient, ecg, a enlever mais utiliser des archivages puisque ce sont des donnees medicales..
+
+pathologie : ce sont des maladies cardiaques au debut, c'est par la suite qu'on va evoluer vers d'autres maladies issues d'autres pathologies...
+
+Acteurs: les droits suivant les profils
+
+les constantes a ne pas repeter telles que :
+-la date de niassance , l'age, nom, prenom
+
+. les scenarios nominales ou alternatifs a mettre derriere
+
+l'assistante ou le medecin->(c'est lui qui doit preciser la pathologie )
+
+. Et mettre les differentes pathologies cardiaques comme une liste deroulante
+
+
+1 - deploiement
+2 - les roles(assistante ->(saisie patient , entrer ecg) , medecin-> pathologie)
+
+3- statistics 
+4- les regles d'anonymisation , hashage...
+5 - analyse des metadonnees medicales  
+
+
+En  entree on a la pathologie Cardiaque ->  Autre pathologie -> ECG -> metadonnees ou autres analyses 
+
