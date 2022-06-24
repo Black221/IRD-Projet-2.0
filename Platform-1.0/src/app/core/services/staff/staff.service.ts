@@ -17,7 +17,7 @@ export class StaffService {
     }
     staffSubject = new Subject<StaffModel[]>();
     // @ts-ignore
-    private staffs: StaffModel[] = [];
+    private staffs: any[] = [];
 
     constructor(private httpClient: HttpClient) {
         // @ts-ignore

@@ -15,11 +15,7 @@ module.exports.staffRegister = async (req, res) => {
     if (error)
         return res.status(400).json(error.details[0].message);
 
-    const emailExist = await Staff.findOne({ email: req.body.email});
-    if (emailExist)
-        return res.status(400).json('Email already exists');
-
-    const loginExiste = await Staff.findOne({ email: req.body.email});
+    const loginExiste = await Staff.findOne({ login: req.body.login});
     if (loginExiste)
         return res.status(400).json('Login already exists');
 
@@ -33,7 +29,8 @@ module.exports.staffRegister = async (req, res) => {
         sex: req.body.sex,
         profession: req.body.profession,
         address: req.body.address,
-        cni : req.body.cni
+        cni : req.body.cni,
+        phone : req.body.phone
     });
     console.log(staff);
     try {
@@ -74,8 +71,10 @@ module.exports.isAuth = (req, res) => {
             jwt.verify(
                 token, process.env.TOKEN_SECRET,'', async (err, decodedToken) => {
                     if (err) {
+                        console.log(token)
                         res.status(200).send({ error: err, isAuth: false});
                     } else {
+                        console.log(token)
                         res.status(200).send({isAuth: true, id: decodedToken.id});
                     }
                 });

@@ -20,7 +20,7 @@
                 <div style="width: 15px"></div>
                 <div class="col-4 ">{{staff.firstname}}</div>
                 <div class="col-2">{{staff.lastname}}</div>
-                <div class="col-2">{{staff.birthday | date :'d/m/y'}}</div>
+                <div class="col-2">{{staff.birthday | date }}</div>
                 <div class="text-center" style="width: 50px">{{staff.sex}}</div>
                 <div class="col-1 d-flex justify-content-between align-items-center">
                     <a [routerLink]="'/staffs/view/'+[staff._id]"><i class="fa-solid fa-eye text-info"></i></a>

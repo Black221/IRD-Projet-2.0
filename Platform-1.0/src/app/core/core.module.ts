@@ -12,6 +12,9 @@ import {PatientService} from "./services/patient/patient.service";
 import {StaffService} from "./services/staff/staff.service";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
+import {EcgMetadataService} from "./services/ecg/ecg-metadata.service";
+import {FormsModule} from "@angular/forms";
+import {httpInterceptorProviders} from "./interceptors";
 
 
 
@@ -35,14 +38,16 @@ import {RouterModule} from "@angular/router";
     imports: [
         CommonModule,
         HttpClientModule,
-        RouterModule
+        RouterModule,
+        FormsModule
     ],
     providers: [
         EcgService,
         PathologyService,
         PatientService,
         StaffService,
-
+        EcgMetadataService,
+        httpInterceptorProviders
     ]
 })
 export class CoreModule { }

@@ -9,12 +9,15 @@ const EcgMetadataSchema = mongoose.Schema({
     metadata_id: { // foreign key
         type: String
     },
+    cardiac_diseases: {
+        type: String
+    },
     recording: {
         started_at: {
-            type: Date
+            type: String
         },
         ended_at: {
-            type: Date
+            type: String
         }
     },
     patient: {

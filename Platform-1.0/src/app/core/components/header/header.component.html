@@ -13,4 +13,4 @@
         <a class="nav-link link-light" href="#" (click)="onLogout()" *ngIf="!isAuth">LogOut</a>
     </div>
 </nav>
-<app-nav-bar *ngIf="(!isAuth)"></app-nav-bar>
+<app-nav-bar  (searchcriteria)="searchThis($event)"></app-nav-bar>

@@ -2,61 +2,65 @@
     <h3 class="p-4 bg-success text-light">
         <span>New ECG</span>
     </h3>
-    <form class="row g-3 p-3 bg-success bg-opacity-25" (ngSubmit)="onSubmit()" [formGroup]="ecgForm">
+    <form class="row g-3 p-3 bg-success bg-opacity-25" enctype="multipart/form-data" (ngSubmit)="onSubmit()" [formGroup]="ecgForm">
         <div class="col-12">
             {{errorMessage.message}}
         </div>
-        <div class="col-12">
-            <label for="dataset" class="form-label">Pathologies</label>
+        <div class="col-12 form-floating">
             <select class="form-select" id="dataset" formControlName="pathology">
-                <option *ngFor="let pathology of pathologies">{{pathology.name}}</option>
+                <option *ngFor="let pathology of pathologies; let index = index" value="{{pathology._id}}">{{pathology.name}}</option>
             </select>
+            <label for="dataset" class="form-label">Pathology</label>
+        </div>
+        <div class="col-12 form-floating">
+            <input type="text" id="cardiac" class="form-control" placeholder="" formControlName="cardiac_diseases">
+            <label for="cardiac" class="form-label">cardiac pathologies</label>
         </div>
         <label class="form-label">Patient</label>
         <div class="px-4 row g-1 ">
-            <div class="col-12">
-                <label for="patient" class="form-label"> Patient</label>
+            <div class="col-12 form-floating">
                 <select class="form-select" id="patient" formControlName="patient">
-                    <option *ngFor="let patient of patients ">{{patient.firstname+'-'+patient.lastname+'-'+patient.birthday}}</option>
+                    <option *ngFor="let patient of patients; let index = index" value="{{patient._id}}">{{patient.firstname+'-'+patient.lastname+'-'+patient.birthday}}</option>
                 </select>
+                <label for="patient" class="form-label"> Patient</label>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 form-floating">
+                <input type="text" class="form-control" id="age" placeholder="" formControlName="age">
                 <label for="age" class="form-label">Age</label>
-                <input type="text" class="form-control" id="age" formGroupName="age">
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 form-floating">
+                <input type="text" class="form-control" id="height" placeholder="" formControlName="height">
                 <label for="height" class="form-label">Height</label>
-                <input type="text" class="form-control" id="height" formGroupName="height">
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 form-floating">
+                <input type="text" class="form-control" id="weight" placeholder="" formControlName="weight">
                 <label for="weight" class="form-label">Weight</label>
-                <input type="text" class="form-control" id="weight" formGroupName="weight">
             </div>
-            <div class="col-md-3">
-                <label for="sex" class="form-label">Sex</label>
-                <div class="d-flex  justify-content-between">
-                    M<input type="radio" name="sex" id="sex" class="form-check m-1" formGroupName="sex">
-                    F<input type="radio" name="sex" class="form-check m-1" formGroupName="sex">
+            <div class="col-md-3 form-floating">
+                <div class="d-flex  justify-content-between form-control">
+                    M<input type="radio" name="sex" value="M" id="sex" class="form-check m-1" formControlName="sex">
+                    F<input type="radio" name="sex" value="F" class="form-check m-1" formControlName="sex">
                 </div>
+                <label for="sex" class="form-label">Sex</label>
             </div>
         </div>
         <label  class="form-label">Recording</label>
-        <div class="px-4 row g-1">
-            <div class="col-5">
-                <label for="start"  class="form-label">Start</label>
-                <input class="form-control" id="start" type="text" formGroupName="recordingStart">
+        <div class="px-4 row g-1  ">
+            <div class="col-4 mx-4 form-floating">
+                <input class="form-control" id="recordingStart" placeholder="" type="text" formControlName="recordingStart">
+                <label for="recordingStart"  class="form-label">Start</label>
             </div>
-            <div class="col-5">
-                <label for="end"  class="form-label">End</label>
-                <input class="form-control" id="end" type="text" formGroupName="recordingEnd">
+            <div class="col-4 form-floating">
+                <input class="form-control" id="recordingEnd" placeholder="" type="text" formControlName="recordingEnd">
+                <label for="recordingEnd"  class="form-label">End</label>
             </div>
         </div>
-        <div class="mb-3">
-            <label for="formFile" class="form-label">File</label>
-            <input class="form-control" type="file" id="formFile" formGroupName="file">
+        <div class="mb-3 ">
+            <label for="ecgFile" class="form-label">File</label>
+            <input class="form-control" type="file" id="ecgFile" (change)="uploadFile($event)" formControlName="ecgFile">
         </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-success">save</button>
+            <button type="submit" [disabled]="ecgForm.invalid" class="btn btn-success">save</button>
         </div>
     </form>
 </div>

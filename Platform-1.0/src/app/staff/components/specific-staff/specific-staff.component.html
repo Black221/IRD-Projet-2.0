@@ -4,9 +4,9 @@
             <div class="bg-success mb-4 mt-0 d-flex justify-content-between p-3 text-light">
                 <h4 class="">{{staff.firstname+' '+staff.lastname}}</h4>
                 <div class="fs-5">
-                    <a class="mx-2 link-info" routerLink="/staff/ecg/{{id}}"><i class="fa-solid fa-eye"></i></a>
+<!--                    <a class="mx-2 link-info" routerLink="/staff/ecg/{{id}}"><i class="fa-solid fa-eye"></i></a>-->
                     <a class="mx-2 link-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a class="mx-2 link-danger"><i class="fa-solid fa-trash-can"></i></a>
+                    <a *ngIf="staff._id !== auth" class="mx-2 link-danger"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
             </div>
             <div class="row g-3 p-4 pt-2">
@@ -18,7 +18,7 @@
                 <!-- Birthday -->
                 <div class="col-md-5">
                     <label class="form-label  fw-bold">Birthday</label>
-                    <div type="text" class="form-control">{{staff.birthday}}</div>
+                    <div type="text" class="form-control">{{staff.birthday | date}}</div>
                 </div>
                 <div class="col-md-2">
                     <label class="form-label  fw-bold">Sex</label>
@@ -46,6 +46,18 @@
                 <div class="col-md-4">
                     <label class="form-label  fw-bold">Country</label>
                     <div type="text" class="form-control">{{staff.address.country}}</div>
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label  fw-bold">Login</label>
+                    <div type="text" class="form-control">{{staff.login}}</div>
+                </div>
+                <div class="col-md-7">
+                    <label class="form-label  fw-bold">Profession</label>
+                    <div type="text" class="form-control">{{staff.profession}}</div>
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label  fw-bold">Email</label>
+                    <div type="text" class="form-control">{{staff.email}}</div>
                 </div>
             </div> <!-- Row END -->
         </div>

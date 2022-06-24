@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
-export class EcgMetadataMetadataService {
+export class EcgMetadataService {
 
     constructor(
         private httpClient: HttpClient
@@ -51,10 +51,10 @@ export class EcgMetadataMetadataService {
         );
     };
 
-    postEcgMetadata(EcgMetadata: EcgMetadataModel) {
+    postEcgMetadata(creater: string, id: string, EcgMetadata: EcgMetadataModel) {
         return new Promise (
             (resolve, reject) => {
-                this.httpClient.post(this.urlEcgMetadata.post, EcgMetadata).subscribe(
+                this.httpClient.post(this.urlEcgMetadata.post+creater+'/'+id, EcgMetadata).subscribe(
                     (res) => {
                         resolve(res);
                     },

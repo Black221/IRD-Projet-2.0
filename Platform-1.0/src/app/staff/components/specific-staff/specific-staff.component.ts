@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {StaffService} from "../../../core/services/staff/staff.service";
 import {ActivatedRoute} from "@angular/router";
+import {AuthService} from "../../../core/services/auth/auth.service";
 
 @Component({
   selector: 'app-specific-staff',
@@ -10,17 +11,20 @@ import {ActivatedRoute} from "@angular/router";
 export class SpecificStaffComponent implements OnInit {
 
     // @ts-ignore
-    staff: StaffModel;
+    staff: any = {address: ""};
     link: any;
     id: any;
+    auth: any;
     constructor(
         private staffService: StaffService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private authService: AuthService
     ) { }
 
     ngOnInit(): void {
         const id = this.route.snapshot.params['id'];
         this.getStaff(id);
+        this.auth = this.authService.getAuth();
     }
 
     getStaff (id: string) {

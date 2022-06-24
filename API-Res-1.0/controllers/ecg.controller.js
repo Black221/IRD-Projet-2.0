@@ -3,7 +3,7 @@ const EcgMetadataModel = require('../models/EcgMetadataModel');
 const EcgModel = require('../models/EcgModel');
 const MetadataModel = require('../models/MetadataModel');
 const PatientModel = require('../models/PatientModel');
-const MedicalStaffModel = require('../models/MedicalStaffModel');
+const Staff = require('../models/staff.model');
 const fs = require('fs');
 const replace = require('replace');
 require('dotenv').config({ path: './.env' });
@@ -51,8 +51,9 @@ module.exports.getEcgByPatient = async(req, res) => {
 
 /**
  * @description - This controller is used to get ecg by id.
- * @param {string} ecgId - The id of ecg.
  * check if id is valid before doing anything else.
+ * @param req
+ * @param res
  */
 module.exports.getOneEcg = async(req, res) => {
     if (!validId.isValid(req.params.ecgId)) return res.status(400).json({ message: 'Invalid id' });
@@ -81,58 +82,53 @@ module.exports.getOneEcg = async(req, res) => {
  * @params - createrId      datasetId     patientId
  */
 module.exports.addOneEcg = async(req, res) => {
-    const creater = await MedicalStaffModel.findById({ _id: req.params.createrId })
+    const creater = await Staff.findById({ _id: req.params.createrId })
     if (!creater) return res.status(400).json({ message: 'Personnel inexistant' })
     try {
-        let ecgFile = req.files.ecgFile
-        if (!req.files) {
-            res.status(400).send({ message: 'No file uploaded' })
-        } else {
-            const metadataId = await new MetadataModel({
-                created_by: req.params.createrId,
-                last_updated_by: req.params.createrId
+
+        const metadataId = await new MetadataModel({
+            created_by: req.params.createrId,
+            last_updated_by: req.params.createrId
+        });
+        const metadataIdSave = await metadataId.save();
+
+        const dataset = await DatasetModel.findOne({ _id: req.params.datasetId })
+        const patient = await PatientModel.findOne({ _id: req.params.patientId })
+
+        if (dataset && patient) {
+            const ecgId = await new EcgModel({
+                dataset_id: req.params.datasetId,
+                metadata_id: metadataIdSave._id,
+                patient_id: req.params.patientId
             });
-            const metadataIdSave = await metadataId.save();
+            const ecgIdSave = await ecgId.save();
+            console.log("succes")
+            const filename = ecgId._id + "_" + patient.firstname.split(" ").join("-") + "-" + patient.lastname.split(" ").join("-")
+            const patientRep = patient.firstname.split(" ").join("-") + "-" + patient.lastname.split(" ").join("-") + "_" + dataset.name.split(" ").join("-") + "_" + patient._id
+            const dir = `${dataset.path}${process.env.SE}${patientRep}`
+            const filepath = `${dir}${process.env.SE}${filename}`
 
-            const dataset = await DatasetModel.findOne({ _id: req.params.datasetId })
-            const patient = await PatientModel.findOne({ _id: req.params.patientId })
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir, { recursive: true });
+            }
 
-            if (dataset && patient) {
-                const ecgId = await new EcgModel({
-                    dataset_id: req.params.datasetId,
-                    metadata_id: metadataIdSave._id,
-                    patient_id: req.params.patientId
-                });
-                const ecgIdSave = await ecgId.save();
-                const filename = ecgId._id + "_" + patient.firstname.split(" ").join("-") + "-" + patient.lastname.split(" ").join("-")
-                const patientRep = patient.firstthname.split(" ").join("-") + "-" + patient.lastname.split(" ").join("-") + "_" + dataset.name.split(" ").join("-") + "_" + patient._id
-                const dir = `${dataset.path}${process.env.SE}${patientRep}`
-                const filepath = `${dir}${process.env.SE}${filename}`
-
-                if (!fs.existsSync(dir)) {
-                    fs.mkdirSync(dir, { recursive: true });
+            const ecgIdSaveFilepath = await EcgModel.findByIdAndUpdate({ _id: ecgIdSave.id }, {
+                $set: {
+                    filepath: filepath,
+                    filename: filename
                 }
-                await ecgFile.mv(filepath);
+            }, { new: true });
+            res.status(200).json({ ecg: ecgIdSaveFilepath, metadata: metadataId });
 
-                //const numberEcg = ecgIdSave._id;
-                //console.log(numberEcg)
-                const ecgIdSaveFilepath = await EcgModel.findByIdAndUpdate({ _id: ecgIdSave.id }, {
-                    $set: {
-                        filepath: filepath,
-                        filename: filename
-                    }
-                }, { new: true });
-                res.status(200).json({ ecg: ecgIdSaveFilepath, metadata: metadataId });
-
-            } else {
-                if (!dataset) {
-                    res.status(400).json({ message: 'Pathologie inexistante' })
-                }
-                if (!patient) {
-                    res.status(400).json({ message: 'Patient inexistant' })
-                }
+        } else {
+            if (!dataset) {
+                res.status(400).json({ message: 'Pathologie inexistante' })
+            }
+            if (!patient) {
+                res.status(400).json({ message: 'Patient inexistant' })
             }
         }
+
     } catch (error) {
         res.status(500).json({ message: error });
         console.log(error)
@@ -147,7 +143,7 @@ module.exports.addOneEcg = async(req, res) => {
  */
 module.exports.updateOneEcg = async(req, res) => {
     if (!validId.isValid(req.params.ecgId)) return res.status(400).json({ message: 'Invalid id' });
-    const updater = await MedicalStaffModel.findById({ _id: req.params.updaterId })
+    const updater = await Staff.findById({ _id: req.params.updaterId })
     if (!updater) return res.status(400).json({ message: 'Personnel inexistant' })
 
     try {
@@ -172,7 +168,6 @@ module.exports.updateOneEcg = async(req, res) => {
             const dir = `${dataset.path}${process.env.SE}${patientRep}`
             const filepath = `${dir}${process.env.SE}${filename}`
 
-
             if (!fs.existsSync(dir)) {
                 fs.mkdirSync(dir, { recursive: true });
             }
@@ -186,8 +181,6 @@ module.exports.updateOneEcg = async(req, res) => {
                     filename: filename
                 }
             }, { new: true });
-
-
 
             const updatedEcgMetadata = await EcgMetadataModel.findOneAndUpdate({ ecg_id: req.params.ecgId }, {
                 $set: {

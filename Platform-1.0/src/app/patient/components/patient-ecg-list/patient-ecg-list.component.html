@@ -1,1 +1,17 @@
-<p>patient-ecg-list works!</p>
+<div class="container bg-success text-light px-4 align-items-center d-flex justify-content-between">
+    <h2>{{patient.firstname+' '+patient.lastname+' '+patient.birthday}}</h2>
+    <app-filter  [doName]="false" (filter)="filterEcg($event)" [linkForm]="'/ecgs/new'"></app-filter>
+</div>
+<div class="container">
+    <div class="p-4">
+        <div class="" *ngFor="let ecg of ecgs">
+            <app-ecg-item
+                [ecg]="ecg"
+            ></app-ecg-item>
+        </div>
+        <div class="  d-flex align-items-center justify-content-center fs-4  bg-success bg-opacity-25"
+             *ngIf="ecgs.length === 0" style="height: 250px">
+            Empty
+        </div>
+    </div>
+</div>

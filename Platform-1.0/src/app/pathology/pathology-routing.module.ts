@@ -9,7 +9,7 @@ import {PathologyFormComponent} from "./components/pathology-form/pathology-form
 const routes: Routes = [
     { path: '', component: PathologyComponent },
     { path: 'view/:id', component: SpecificPathologyComponent },
-    { path: 'ecg/:id', component: PathologyEcgListComponent },
+    { path: 'ecgs/:id', component: PathologyEcgListComponent },
     { path: 'new', component: PathologyFormComponent },
 ];
 

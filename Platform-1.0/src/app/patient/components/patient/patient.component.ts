@@ -13,6 +13,10 @@ export class PatientComponent implements OnInit {
     patients: any[] = [];
     // @ts-ignore
     patientServer: any;
+    firstname = true;
+    lastname = false;
+    birthday = false;
+    sex = false;
 
     constructor(
         private patientService: PatientService
@@ -30,6 +34,7 @@ export class PatientComponent implements OnInit {
                     if (typeof res !== "string" && res.patients[0] !== undefined)
                         // @ts-ignore
                         this.patients = res.patients;
+                    this.filterFirstname()
                     // @ts-ignore
                     console.log(res.patients);
                 }
@@ -63,4 +68,51 @@ export class PatientComponent implements OnInit {
 
     }
 
+    filterFirstname() {
+        // @ts-ignore
+        this.firstname = !this.firstname
+        this.patients.sort((x, y) => {
+            let a = x.firstname.toUpperCase(),
+                b = y.firstname.toUpperCase();
+            if (!this.firstname)
+                return a == b ? 0 : a > b ? 1 : -1;
+            return a == b ? 0 : a > b ? -1 : 1;
+        })
+    }
+
+    filterLastname() {
+        // @ts-ignore
+        this.lastname = ! this.lastname
+        this.patients.sort((x, y) => {
+            let a = x.lastname.toUpperCase(),
+                b = y.lastname.toUpperCase();
+            if (!this.lastname)
+                return a == b ? 0 : a > b ? 1 : -1;
+            return a == b ? 0 : a > b ? -1 : 1;
+        })
+    }
+
+    filterBirthday() {
+        // @ts-ignore
+        this.birthday = ! this.birthday
+        this.patients.sort((x, y) => {
+            let a = x.birthday.toUpperCase(),
+                b = y.birthday.toUpperCase();
+            if (!this.birthday)
+                return a == b ? 0 : a > b ? 1 : -1;
+            return a == b ? 0 : a > b ? -1 : 1;
+        })
+    }
+
+    filterSex() {
+        // @ts-ignore
+        this.sex = ! this.sex
+        this.patients.sort((x, y) => {
+            let a = x.sex.toUpperCase(),
+                b = y.sex.toUpperCase();
+            if (!this.sex)
+                return a == b ? 0 : a > b ? 1 : -1;
+            return a == b ? 0 : a > b ? -1 : 1;
+        })
+    }
 }

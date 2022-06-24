@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
     // @ts-ignore
     errorMessage: string;
     cookie: any;
+    private content: any;
     constructor(
         private authService: AuthService,
         private router: Router,
@@ -27,9 +28,7 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit(): void {
         // @ts-ignore
-        let res = this.authService.getIsAuth();
-        console.log(res)
-        this.isAuth = this.authService.getIsAuth();
+
     }
 
     onLogout() {
@@ -43,4 +42,23 @@ export class HeaderComponent implements OnInit {
         })
     }
 
+    onSearchChange($event: Event) {
+
+    }
+
+    newArray: any
+    searchThis(data: any) {
+        this.content = this.newArray
+        console.log(data)
+        if (data) {
+            this.content = this.content.filter(function (ele: { name: string; }, i: any, array: any) {
+                let arrayelement = ele.name.toLowerCase()
+                return arrayelement.includes(data)
+            })
+        }
+        else {
+            console.log(this.content)
+        }
+        console.log(this.content)
+    }
 }

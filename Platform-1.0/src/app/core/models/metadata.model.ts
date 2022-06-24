@@ -3,6 +3,8 @@ export class MetadataModel {
         public _id: string,
         public created_by: string,
         public last_updated_by: string,
+        public createdAt: string,
+        public updatedAt: string,
     ) {
     }
 }

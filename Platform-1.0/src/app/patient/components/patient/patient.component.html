@@ -8,10 +8,10 @@
     <div class="table-responsive table">
         <div class="justify-content-between d-flex fw-bold col-12 py-2">
             <div style="width: 15px">#</div>
-            <div class="col-4 ">Firstname</div>
-            <div class="col-2">Lastname</div>
-            <div class="col-2">Birthday</div>
-            <div class="" style="width: 50px">Sex</div>
+            <div class="col-4 " style="cursor: pointer" (click)="filterFirstname()">Firstname</div>
+            <div class="col-2" style="cursor: pointer" (click)="filterLastname()">Lastname</div>
+            <div class="col-2" style="cursor: pointer" (click)="filterBirthday()">Birthday</div>
+            <div class="" style="width: 50px;cursor: pointer" (click)="filterSex()">Sex</div>
             <div class="col-1">Actions</div>
         </div>
         <div class="body list-group">
@@ -20,7 +20,7 @@
                 <div style="width: 15px"></div>
                 <div class="col-4 ">{{patient.firstname}}</div>
                 <div class="col-2">{{patient.lastname}}</div>
-                <div class="col-2">{{patient.birthday | date :'d/m/y'}}</div>
+                <div class="col-2">{{patient.birthday | date }}</div>
                 <div class="text-center" style="width: 50px">{{patient.sex}}</div>
                 <div class="col-1 d-flex justify-content-between align-items-center">
                     <a [routerLink]="'/patients/view/'+[patient._id]"><i class="fa-solid fa-eye text-info"></i></a>

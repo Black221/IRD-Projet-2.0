@@ -12,7 +12,7 @@ import {AuthService} from "../../../core/services/auth/auth.service";
 export class StaffFormComponent implements OnInit {
 
     // @ts-ignore
-    staff:StaffModel;
+    staff: any;
     newStaff: any;
     // @ts-ignore
     signUpForm: FormGroup;
@@ -31,17 +31,18 @@ export class StaffFormComponent implements OnInit {
             {
                 firstname: ['', Validators.required],
                 lastname: ['', Validators.required],
-                cni: ['', Validators.required],
+                cni: [''],
                 sex: ['', Validators.required],
-                email: ['', [Validators.required, Validators.email]],
+                email: [''],
+                phone: [''],
                 birthday: ['', Validators.required],
-                nationality: ['', Validators.required],
+                nationality: [''],
                 login: ['', Validators.required],
                 password: ['', [Validators.required, Validators.pattern(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]],
-                profession: ['', Validators.required],
-                address: ['', Validators.required],
-                city: ['', Validators.required],
-                country: ['', Validators.required],
+                profession: [''],
+                address: [''],
+                city: [''],
+                country: [''],
             }
         );
     }
@@ -60,6 +61,7 @@ export class StaffFormComponent implements OnInit {
             email : this.signUpForm.get('email').value,
             address : {
                 // @ts-ignore
+                city : this.signUpForm.get('city').value,
                 // @ts-ignore
                 address : this.signUpForm.get('address').value,
                 // @ts-ignore
@@ -76,6 +78,8 @@ export class StaffFormComponent implements OnInit {
             // @ts-ignore
             password : this.signUpForm.get('password').value,
             // @ts-ignore
+            phone : this.signUpForm.get('phone').value,
+            // @ts-ignore
             profession : this.signUpForm.get('profession').value,
         }
 
@@ -83,7 +87,7 @@ export class StaffFormComponent implements OnInit {
             .then(() => {
                 this.router.navigate(['/staffs']);
             }, (error) => {
-                this.errorMessage = error;
+                this.errorMessage = error.message;
             })
     }
 }

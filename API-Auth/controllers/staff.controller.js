@@ -52,9 +52,13 @@ module.exports.updateStaff = async (req, res) => {
                 $set: {
                     firstname: req.body.firstname,
                     lastname: req.body.lastname,
-                    email: req.body.email,
-                    password: req.body.password,
-                    birthday: req.body.birthday
+                    login: req.body.login,
+                    birthday: req.body.birthday,
+                    sex: req.body.sex,
+                    profession: req.body.profession,
+                    address: req.body.address,
+                    cni : req.body.cni,
+                    phone : req.body.phone
                 }
             }
         ).select('-password');

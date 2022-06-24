@@ -11,7 +11,7 @@ import {AuthService} from "../../../core/services/auth/auth.service";
 export class StaffComponent implements OnInit {
 
     //@ts-ignore
-    staffs: StaffModel[] = [];
+    staffs: any[] = [];
     staffServer: any;
     id: any;
 

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
     selector: 'app-filter',
@@ -10,6 +10,9 @@ export class FilterComponent implements OnInit {
     @Input() linkPrevious: any;
     @Input() linkNext: any;
     @Input() linkForm: any;
+    @Output() filter = new EventEmitter<String>();
+    @Input() doName = false;
+    @Input() doPathology: any;
 
     constructor() { }
 
@@ -17,4 +20,8 @@ export class FilterComponent implements OnInit {
 
     }
 
+    filterBy($event: Event) {
+        //@ts-ignore
+        this.filter.emit($event.target.value);
+    }
 }

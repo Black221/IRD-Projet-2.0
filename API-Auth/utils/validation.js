@@ -12,7 +12,6 @@ module.exports.registerValidation = data => {
             .required(),
         email: Joi
             .string()
-            .required()
             .email(),
         password: Joi
             .string()
@@ -21,13 +20,20 @@ module.exports.registerValidation = data => {
         login: Joi
             .string()
             .required()
-            .min(6),
+            .min(5),
         sex: Joi.string(),
-        profession: Joi.string(),
-        address: Joi.object(),
-        cni: Joi.string(),
-        birthday: Joi.string(),
-        nationality: Joi.string()
+        profession: Joi.string()
+            .optional().allow(" "),
+        address: Joi.object()
+            .optional().allow(" "),
+        cni: Joi
+            .optional(),
+        birthday: Joi.string()
+            .optional().allow(" "),
+        nationality: Joi
+            .optional().allow(" "),
+        phone: Joi
+            .optional().allow(" "),
     });
     return schema.validate(data);
 }
@@ -41,24 +47,24 @@ module.exports.loginValidation = data => {
         login: Joi
             .string()
             .required()
-            .min(6)
+            .min(5)
     });
     return schema.validate(data);
 }
 module.exports.updateValidation = data => {
     const schema = Joi.object({
         firstname: Joi
-            .string()
-            .min(3)
-            .required(),
+            .string(),
         lastname: Joi
-            .string()
-            .min(2)
-            .required(),
-        email: Joi
-            .string()
-            .required()
-            .email(),
+            .string(),
+        login: Joi.string(),
+        sex: Joi.string(),
+        profession: Joi.string(),
+        address: Joi.object(),
+        cni: Joi.string(),
+        birthday: Joi.string(),
+        nationality: Joi.string(),
+        phone: Joi.string()
     })
     return schema.validate(data);
 }

@@ -5,7 +5,7 @@ import {HomeComponent} from "./core/components/home/home.component";
 import {AuthGard} from "./core/gards/auth.gard";
 const routes: Routes = [
     { path: '', component: SigninComponent },
-    { path: 'home', component: HomeComponent, canActivate: [AuthGard]},
+    { path: 'home', component: HomeComponent},
     { path: 'auth', loadChildren: () => import('./auth/auth-routing.module').then(m => m.AuthRoutingModule) },
     { path: 'pathologies',  loadChildren: () => import('./pathology/pathology-routing.module').then(m => m.PathologyRoutingModule) },
     { path: 'ecgs', loadChildren: () => import('./ecg/ecg-routing.module').then(m => m.EcgRoutingModule)  },

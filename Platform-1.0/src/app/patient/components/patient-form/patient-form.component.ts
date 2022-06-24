@@ -37,7 +37,6 @@ export class PatientFormComponent implements OnInit {
                 country: ['', Validators.required],
                 city: ['', Validators.required],
                 phone: ['', Validators.required],
-                profession: ['', Validators.required]
             }
         );
     }

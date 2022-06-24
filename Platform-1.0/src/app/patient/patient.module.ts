@@ -8,6 +8,8 @@ import { PatientEcgListComponent } from './components/patient-ecg-list/patient-e
 import {PatientRoutingModule} from "./patient-routing.module";
 import {SharedModule} from "../shared/shared.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CoreModule} from "../core/core.module";
+import {EcgModule} from "../ecg/ecg.module";
 
 
 
@@ -25,7 +27,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         SharedModule,
         SharedModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        CoreModule,
+        EcgModule
     ]
 })
 export class PatientModule { }

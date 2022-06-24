@@ -23,6 +23,8 @@ export class EcgService {
     urlEcg = {
         getAll : "http://localhost:5200/ecg/getAll/",
         getOne : "http://localhost:5200/ecg/getOne/",
+        patient : "http://localhost:5200/ecg/getbyPatient/",
+        pathology : "http://localhost:5200/ecg/getByDataset/",
         post : "http://localhost:5200/ecg/postOne/",
         delete : "http://localhost:5200/ecg/deleteOne/",
         update : "http://localhost:5200/ecg/updateOne/"
@@ -43,7 +45,7 @@ export class EcgService {
         );
     };
 
-    getSpecificEcg(id: ObjectId) {
+    getSpecificEcg(id: string) {
         return new Promise (
             (resolve, reject) => {
                 this.httpClient.get(this.urlEcg.getOne+id).subscribe(
@@ -61,6 +63,7 @@ export class EcgService {
     postEcg(creater: string, pathology: string, patient: string, ecg: any) {
         return new Promise (
             (resolve, reject) => {
+                // @ts-ignore
                 this.httpClient.post(this.urlEcg.post+`${creater}/${pathology}/${patient}`, ecg).subscribe(
                     (res) => {
                         resolve(res);
@@ -73,6 +76,19 @@ export class EcgService {
         );
     };
 
+    postFile (id: string, ecg: any) {
+        return new Promise (
+            (resolve, reject) => {
+                this.httpClient.post('http://localhost:5200/ecg/file/'+id, ecg).subscribe(
+                (res) => {
+                    resolve(res);
+                },
+                (error) => {
+                    reject(error);
+                })
+            }
+        )
+    }
     updateEcg(id: ObjectId, ecg: EcgModel) {
         return new Promise (
             (resolve, reject) => {
@@ -88,7 +104,7 @@ export class EcgService {
         );
     };
 
-    deleteEcg(id: ObjectId) {
+    deleteEcg(id: string) {
         return new Promise (
             (resolve, reject) => {
                 this.httpClient.delete(this.urlEcg.delete+id).subscribe(
@@ -105,5 +121,34 @@ export class EcgService {
 
     getEcgByIndex (index: number) {
         return this.ecgs[+index - 1];
+    }
+
+    getPatientEcg(id: string) {
+        return new Promise (
+            (resolve, reject) => {
+                this.httpClient.get(this.urlEcg.patient+id).subscribe(
+                    (res) => {
+                        resolve(res);
+                    },
+                    (error) => {
+                        reject(error);
+                    }
+                );
+            }
+        );
+    }
+    getPathologyEcg(id: string) {
+        return new Promise (
+            (resolve, reject) => {
+                this.httpClient.get(this.urlEcg.pathology+id).subscribe(
+                    (res) => {
+                        resolve(res);
+                    },
+                    (error) => {
+                        reject(error);
+                    }
+                );
+            }
+        );
     }
 }

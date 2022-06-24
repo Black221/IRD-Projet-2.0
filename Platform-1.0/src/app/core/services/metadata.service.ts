@@ -14,7 +14,7 @@ export class MetadataService {
 
     urlMetadata = {
         getAll : "http://localhost:5200/metadata/getAll/",
-        getOne : "http://localhost:5200/metadata/getOne/",
+        getOne : "http://localhost:5200/metadata/get/specific/",
         post : "http://localhost:5200/metadata/postOne/",
         delete : "http://localhost:5200/metadata/deleteOne/",
         update : "http://localhost:5200/metadata/updateOne/"
@@ -35,7 +35,7 @@ export class MetadataService {
         );
     };
 
-    getSpecificMetadata(id: ObjectId) {
+    getSpecificMetadata(id: string) {
         return new Promise (
             (resolve, reject) => {
                 this.httpClient.get(this.urlMetadata.getOne+id).subscribe(

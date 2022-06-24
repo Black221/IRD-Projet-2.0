@@ -8,7 +8,7 @@ import {PatientFormComponent} from "./components/patient-form/patient-form.compo
 const routes: Routes = [
     { path: '', component: PatientComponent },
     { path: 'view/:id', component: SpecificPatientComponent },
-    { path: 'ecg/:id', component: PatientEcgListComponent },
+    { path: 'ecgs/:id', component: PatientEcgListComponent },
     { path: 'new', component: PatientFormComponent },
 ]
 

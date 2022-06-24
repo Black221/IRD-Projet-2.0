@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {EcgService} from "../../../core/services/ecg/ecg.service";
 import {AuthService} from "../../../core/services/auth/auth.service";
+import {PatientService} from "../../../core/services/patient/patient.service";
+import {PathologyService} from "../../../core/services/pathology/pathology.service";
+import {MetadataService} from "../../../core/services/metadata.service";
 
 @Component({
     selector: 'app-ecg',
@@ -9,12 +12,17 @@ import {AuthService} from "../../../core/services/auth/auth.service";
 })
 export class EcgComponent implements OnInit {
     // @ts-ignore
-    ecgs: any[];
+    ecgs: any[] = [];
+    pathology !: string;
+    patient !: string;
     ecgServer: any;
+    created = false;
+    update = false;
 
     constructor(
         private authService: AuthService,
-        private ecgService: EcgService
+        private ecgService: EcgService,
+        private metadataService: MetadataService
     ) { }
 
     ngOnInit(): void {
@@ -28,8 +36,9 @@ export class EcgComponent implements OnInit {
                     this.ecgServer = res;
                     console.log(res);
                     // @ts-ignore
-                    if (typeof res !== "string" && res[0]!== undefined)
-                        this.ecgs = this.ecgServer;
+                    if (typeof res !== "string" && res.ecgs[0]!== undefined) {
+                        this.ecgs = this.ecgServer.ecgs;
+                    }
                 }
             }
         );
@@ -43,4 +52,9 @@ export class EcgComponent implements OnInit {
 
     }
 
+    filterEcg($event: String) {
+        // @ts-ignore
+
+       console.log($event)
+    }
 }

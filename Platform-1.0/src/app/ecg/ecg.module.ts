@@ -8,6 +8,7 @@ import {EcgRoutingModule} from "./ecg-routing.module";
 import {CoreModule} from "../core/core.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../shared/shared.module";
+import {PdfViewerModule} from "ng2-pdf-viewer";
 
 
 
@@ -28,6 +29,7 @@ import {SharedModule} from "../shared/shared.module";
         FormsModule,
         ReactiveFormsModule,
         SharedModule,
+        PdfViewerModule
     ]
 })
 export class EcgModule { }

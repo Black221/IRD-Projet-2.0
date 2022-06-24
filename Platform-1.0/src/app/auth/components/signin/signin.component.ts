@@ -54,9 +54,10 @@ export class SigninComponent implements OnInit {
                     // @ts-ignore
                     this.authService.setToken(res.token);
                     // @ts-ignore
-                    this.authService.setUserId(res.UserId)
+                    this.authService.setUserId(res.userId);
+                    console.log(res)
+                    console.log(this.authService.getUserId());
                     this.authService.setIsAuth(true);
-                    console.log(this.authService.getIsAuth())
                     this.router.navigateByUrl('/home');
                 } else {
                     this.errorMessage = "Try again"
